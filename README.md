@@ -21,3 +21,7 @@ KompiraはIT運用管理業務の自動化を支援するための基盤シス�
 - Linux/CentOS 6.3 推奨
 - Python 2.6
 
+ライセンス
+----------
+
+[使用許諾契約書](https://bitbucket.org/kompira/package/wiki/LICENSE "ライセンス")に同意の上、ダウンロードページからダウンロードして下さい。
