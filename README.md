@@ -25,3 +25,7 @@ KompiraはIT運用管理業務の自動化を支援するための基盤シス�
 ----------
 
 [使用許諾契約書](https://bitbucket.org/kompira/package/wiki/LICENSE "ライセンス")に同意の上、ダウンロードページからダウンロードして下さい。
+
+ニュース
+--------
+新規リリース情報など、ニューストピックスは[こちら](https://bitbucket.org/kompira/package/wiki/News "ニュース")をご参照ください。
