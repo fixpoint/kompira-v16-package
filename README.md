@@ -18,7 +18,7 @@ KompiraはIT運用管理業務の自動化を支援するための基盤シス�
 --------
 
 - x86_64
-- Linux/CentOS 6.3, 6.4 推奨
+- Linux/CentOS 6.6 推奨
 - Python 2.6
 
 ライセンス
