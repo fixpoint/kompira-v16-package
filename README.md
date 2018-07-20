@@ -20,7 +20,7 @@ KompiraはIT運用管理業務の自動化を支援するための基盤シス�
 Kompira 1.5 の動作環境は以下の通りです。
 
 - x86_64
-- Linux/CentOS 6.X, 7.X (7.X 推奨)
+- CentOS/RHEL 6.X, 7.X (7.X 推奨)
 - Python 2.7
 
 
@@ -30,6 +30,7 @@ Kompira 1.5 の動作環境は以下の通りです。
 * CPU: 1GHz以上
 * メモリ: 2GB以上
 * HDD: 30GB以上
+
 
 ライセンス
 ----------
