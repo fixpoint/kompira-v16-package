@@ -33,14 +33,14 @@ Kompira が利用するポート番号は以下の通りです。
 #### 外部から内部への方向
 
 * Kompira GUI, REST APIへのアクセス： http(80), https(443)
-* kompira_sendevt によるイベント送信: amqp(5672)
+* kompira_sendevt によるイベント送信： amqp(5672)
 
 #### 内部から外部への方向
 
 * Kompira からメール受信： POP(110), IMAP(143), POPS(995), IMAPS(993)
-* Kompira からメース送信: SMTP(25)
-* Kompira から外部機器へのアクセス: ssh(22), winrm(5985)
-* Kompira から外部 API の呼び出し: http(80), https(443)
+* Kompira からメール送信： SMTP(25)
+* Kompira から外部機器へのアクセス： ssh(22), winrm(5985)
+* Kompira から外部 API の呼び出し： http(80), https(443)
 
 ## ライセンス
 
