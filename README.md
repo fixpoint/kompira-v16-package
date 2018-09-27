@@ -7,8 +7,13 @@ KompiraはIT運用管理業務の自動化を支援するための基盤シス�
 
 ## インストール
 
-パッケージを展開してから、root権限でinstall.shを実行してください（OSは新規インストールを推奨します）。
-手動でインストールを行う場合は、パッケージに含まれているドキュメントを参照してください。
+パッケージを展開したら root 権限で `./install.sh` を実行してください（OSは新規インストールを推奨します）。
+インストールに成功したサーバにブラウザでアクセスするとログイン画面が表示されますので、以下のアカウントでログインすることで Kompira の試用をはじめることができます。
+
+* ユーザ名: `root`
+* パスワード: `root`
+
+ログイン後の画面の右上にある「ヘルプ」をクリックすると、オンラインマニュアルが表示されますので使い方の参考にしてください。
 
 ## 動作環境
 
@@ -42,10 +47,14 @@ Kompira が利用するポート番号は以下の通りです。
 * Kompira から外部機器へのアクセス： ssh(22), winrm(5985)
 * Kompira から外部 API の呼び出し： http(80), https(443)
 
-## ライセンス
+## Kompira ライセンス
 
-[使用許諾契約書](https://bitbucket.org/kompira/package/wiki/LICENSE "ライセンス")に同意の上、ダウンロードページからダウンロードして下さい。
+[使用許諾契約書](https://bitbucket.org/kompira/package/raw/fb3720709e5df40a2a0b10977be18deb6a86e6b7/LICENSE.pdf)に同意の上、ダウンロードページからダウンロードして下さい。
 
-## ニュース
+## Kompira ニュース
 
-新規リリース情報など、ニューストピックスは[こちら](https://bitbucket.org/kompira/package/wiki/News "ニュース")をご参照ください。
+Kompira の最新情報については [Kompiraニュース](https://bitbucket.org/kompira/package/wiki/News) をご参照ください。
+
+## Kompira 運用自動化コラム
+
+Kompira の実践的な使い方やジョブフローの書き方については [運用自動化コラム](https://www.kompira.jp/column/) を参考にしてみてください。
