@@ -47,6 +47,14 @@ Kompira が利用するポート番号は以下の通りです。
 * Kompira から外部機器へのアクセス： ssh(22), winrm(5985)
 * Kompira から外部 API の呼び出し： http(80), https(443)
 
+#### 冗長構成の場合の ACT/SBY 間通信
+
+* rsync(873)
+* rabbitmq(4369, 5672, 25672)
+* postgresql(5432)
+* pcsd(2224)
+* corosync(UDP/5404, UDP/5405)
+
 ## Kompira ライセンス
 
 [使用許諾契約書](https://bitbucket.org/kompira/package/raw/fb3720709e5df40a2a0b10977be18deb6a86e6b7/LICENSE.pdf)に同意の上、ダウンロードページからダウンロードして下さい。
