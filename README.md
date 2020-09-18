@@ -22,8 +22,10 @@ Kompira 1.6 の動作環境は以下の通りです。
 ### 対応システム
 
 * x86_64
-* CentOS/RHEL 7.6以上, 8.x (8.X 推奨)
+* CentOS/RHEL 7.6(※)以上, 8.x (8.X 推奨)
 * Python 3.6
+
+※ CentOS/RHEL 7.6ではPython 3.6を事前にインストールしておき、install.shのオプションに--skip-python3-installを指定する必要があります。
 
 ### 推奨ハードウェア
 
