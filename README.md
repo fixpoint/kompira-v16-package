@@ -66,7 +66,7 @@ Kompira が利用するポート番号は以下の通りです。
 
 Kompira の使用には、ライセンス登録が必要です。詳しくは [license@kompira.jp](mailto:license@kompira.jp) までご連絡ください。
 
-※ ご利用のKompiraのバージョンに依らず、最新のライセンス規約が適用されます。
+※ ご利用のKompiraのバージョンに依らず、最新のライセンス利用規約が適用されます。
 
 ## Kompira ニュース
 
