@@ -62,7 +62,7 @@ Kompira が利用するポート番号は以下の通りです。
 
 ## Kompira ライセンス
 
-[使用許諾契約書](https://bitbucket.org/kompira/package/raw/8310622459307d5bc5a69a70be016e39edd08aff/LICENSE.pdf)に同意の上、ダウンロードページからダウンロードして下さい。
+[使用許諾契約書](https://bitbucket.org/kompira/package/raw/f160f3b8fe31527c4027ac63776e720cef47fcb0/LICENSE.pdf)に同意の上、ダウンロードページからダウンロードして下さい。
 
 Kompira の使用には、ライセンス登録が必要です。詳しくは [license@kompira.jp](mailto:license@kompira.jp) までご連絡ください。
 
