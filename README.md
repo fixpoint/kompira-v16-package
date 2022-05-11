@@ -13,8 +13,8 @@ Kompira 1.6 の動作環境は以下の通りです。
 
 * アーキテクチャ: x86_64
 * オペレーティングシステム:
-    * Red Hat Enterprise Linux (RHEL): 8.0 以上（推奨）または 7.6 以上（代替）
-    * CentOS:  7.6 以上（代替）（※8.0系はCent OSサポート終了に伴い、サポート外）
+    * Red Hat Enterprise Linux (RHEL): 8系（推奨）または 7.6 以上（代替）
+    * CentOS:  7.6 以上（代替）（※8系はCent OSサポート終了に伴い、サポート外）
     * CentOS Stream: 8（代替）
 * Pythonバージョン: Python 3.6
 * ネットワークインタフェース: 1つ以上
