@@ -15,7 +15,6 @@ Kompira 1.6 の動作環境は以下の通りです。
 * オペレーティングシステム:
     * Red Hat Enterprise Linux (RHEL) 8.x 系
     * Red Hat Enterprise Linux (RHEL) 7.x 系 (7.6 以上)
-    * CentOS Stream 8
     * CentOS 7.x 系 (7.6 以上)
     * Rocky Linux 8.x 系
     * AlmaLinux OS 8.x 系
@@ -26,7 +25,7 @@ Kompira 1.6 の動作環境は以下の通りです。
     * Python 3.6 : v1.6.8 以前からアップデートした場合
 * ネットワークインタフェース: 1つ以上
 
-※ CentOS 8 系は EOL に伴いサポート外となりました（インストールに失敗します）。CentOS Stream 8 または RHEL 互換 OS のご利用をご検討ください。
+※ CentOS Linux 8.x 系および CentOS Stream 8 は EOL に伴いサポート外となりました（インストールに失敗します）。RHEL 互換 OS のご利用をご検討ください。
 
 ### 2.2. ハードウェア要件
 
