@@ -156,7 +156,7 @@ Kompira の使用には、ライセンス登録が必要です。詳しくは [l
 
 ### 6.1. Kompira ニュース
 
-Kompira の最新情報については [Kompiraニュース](https://bitbucket.org/kompira/package/wiki/News) をご参照ください。
+Kompira の最新情報については [Kompiraニュース](https://github.com/fixpoint/kompira-release/wiki/News) をご参照ください。
 
 ### 6.2. Kompira 運用自動化コラム
 
