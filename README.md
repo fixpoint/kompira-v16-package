@@ -68,11 +68,19 @@ Kompira が利用するポート番号は以下の通りです。
 
 ## 3. インストール
 
-### 3.1. インストール手順
+### 3.1. パッケージのダウンロード
 
-パッケージを展開したら root 権限で ./install.sh を実行してください。
+[リリースページ](https://github.com/fixpoint/kompira-package/releases) から各リリースの内容確認と、パッケージ (Assets にある kompira-1.6.xx-bin.tar.gz) のダウンロードができます。
+
+インストールしたいリリースのパッケージをダウンロードしたら、インストール先のサーバの任意のディレクトリに配置してください。
+
+### 3.2. インストール手順
+
+パッケージを展開してディレクトリの中に移動して、root 権限で ./install.sh を実行してください。
 
 ```
+# tar zxf kompira-1.6.xx-bin.tar.gz
+# cd kompira-1.6.xx-bin
 # ./install.sh
 ```
 
@@ -88,7 +96,7 @@ Kompira が利用するポート番号は以下の通りです。
 
 ログイン後の画面の右上にある「ヘルプ」をクリックすると、オンラインマニュアルが表示されますので使い方の参考にしてください。
 
-### 3.2. proxy 環境下でのインストール
+### 3.3. proxy 環境下でのインストール
 
 以下のように --proxy オプションを付けて install.sh を実行してください。
 
@@ -104,7 +112,7 @@ Kompira が利用するポート番号は以下の通りです。
 # ./install.sh --proxy user:password@proxy:3128
 ```
 
-### 3.3. インストール時の言語設定
+### 3.4. インストール時の言語設定
 
 デフォルトではインストール先の Linux サーバのシステムの言語設定に合わせてインストールされます。(ただし、対応する言語は日本語と英語のみで、エンコーディング指定は UTF-8 のみサポートしています)
 
@@ -131,6 +139,8 @@ Kompira が利用するポート番号は以下の通りです。
 - v1.6.8 以前から v1.6.9 以降にアップデートした場合、既存の /opt/kompira 環境にインストール済みの Python 3.6 が継続して利用されます。自動的には Python 3.8 へアップデートされませんのでご注意ください。
 - v1.6.3 以前から v1.6.4 以降にアップデートした場合、既存の添付ファイルは kompirad 起動時に自動的にデータベースに保存されます。そのため、添付ファイルの数が多い場合は起動に時間がかかる場合があります。また、データベース保存に移行した後も、添付ファイルに対応するサーバ上の実ファイルはそのまま残っていますので、不要な場合は手動で `/var/opt/kompira/upload` を削除してください。
 
+その他の、過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+
 ### 4.3. 冗長構成での注意点
 - v1.6.10 以降で冗長構成での PostgreSQL アップグレードに対応しました。詳しくは管理ガイドの「1.9.3.3. PostgreSQL アップグレードを伴う両系停止アップデート手順」をご参照ください。
 - v1.6.6 以降で冗長構成時のアップデート手順が変更され、install.sh の後の pcs cluster start が不要になりました。詳しくは管理ガイドの「1.9.3.アップデート」をご参照ください。
@@ -144,24 +154,16 @@ Kompira が利用するポート番号は以下の通りです。
     # pcs resource delete res_lsyncd
     ```
 
-## 5. Kompira ライセンス
+## 5. Kompira 関連の情報
 
-[Kompira Enterprise ライセンス利用規約](https://www.kompira.jp/Kompira_terms.pdf)に同意の上、ダウンロードページからダウンロードして下さい。
+### 5.1. Kompira リリース履歴
 
-Kompira の使用には、ライセンス登録が必要です。詳しくは [license@kompira.jp](mailto:license@kompira.jp) までご連絡ください。
+Kompira のリリース履歴については [リリースページ](https://github.com/fixpoint/kompira-package/releases) をご参照ください。
 
-※ ご利用の Kompira のバージョンに依らず、最新のライセンス利用規約が適用されます。
-
-## 6. Kompira 関連の情報
-
-### 6.1. Kompira ニュース
-
-Kompira の最新情報については [Kompiraニュース](./NEWS.md) をご参照ください。
-
-### 6.2. Kompira 運用自動化コラム
+### 5.2. Kompira 運用自動化コラム
 
 Kompira の実践的な使い方やジョブフローの書き方については [運用自動化コラム](https://www.kompira.jp/column/) を参考にしてみてください。
 
-### 6.3. Kompira コミュニティサイト
+### 5.3. Kompira コミュニティサイト
 
-Kompira の使い方が分からない場合などは、 [コミュニティ> KompiraEnterprise関連](https://kompira.zendesk.com/hc/ja/community/topics/360000014321-KompiraEnterprise%E9%96%A2%E9%80%A3) を参考にしてみてください。同じような質問や回答が見つからない場合は、新たに投稿してみてください。
+Kompira の使い方が分からない場合などは、 [コミュニティ> KompiraEnterprise関連](https://kompira.zendesk.com/hc/ja/community/topics/360000014321) を参考にしてみてください。同じような質問や回答が見つからない場合は、新たに投稿してみてください。
