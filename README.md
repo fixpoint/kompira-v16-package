@@ -70,9 +70,10 @@ Kompira が利用するポート番号は以下の通りです。
 
 ### 3.1. パッケージのダウンロード
 
-[リリースページ](https://github.com/fixpoint/kompira-package/releases) から各リリースの内容確認と、パッケージ (Assets にある kompira-1.6.xx-bin.tar.gz) のダウンロードができます。
+[リリースページ](https://github.com/fixpoint/kompira-v16-package/releases) から各リリースの内容確認と、パッケージ (Assets にある kompira-1.6.xx-bin.tar.gz) のダウンロードができます。
 
-インストールしたいリリースのパッケージをダウンロードしたら、インストール先のサーバの任意のディレクトリに配置してください。
+インストールしたいリリースのパッケージをダウンロードしたら、イン
+ストール先のサーバの任意のディレクトリに配置してください。
 
 ### 3.2. インストール手順
 
@@ -139,9 +140,10 @@ Kompira が利用するポート番号は以下の通りです。
 - v1.6.8 以前から v1.6.9 以降にアップデートした場合、既存の /opt/kompira 環境にインストール済みの Python 3.6 が継続して利用されます。自動的には Python 3.8 へアップデートされませんのでご注意ください。
 - v1.6.3 以前から v1.6.4 以降にアップデートした場合、既存の添付ファイルは kompirad 起動時に自動的にデータベースに保存されます。そのため、添付ファイルの数が多い場合は起動に時間がかかる場合があります。また、データベース保存に移行した後も、添付ファイルに対応するサーバ上の実ファイルはそのまま残っていますので、不要な場合は手動で `/var/opt/kompira/upload` を削除してください。
 
-その他の、過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+その他の、過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-v16-package/blob/main/UPDATE-NOTES.md)」を参照してください。
 
 ### 4.3. 冗長構成での注意点
+
 - v1.6.10 以降で冗長構成での PostgreSQL アップグレードに対応しました。詳しくは管理ガイドの「1.9.3.3. PostgreSQL アップグレードを伴う両系停止アップデート手順」をご参照ください。
 - v1.6.6 以降で冗長構成時のアップデート手順が変更され、install.sh の後の pcs cluster start が不要になりました。詳しくは管理ガイドの「1.9.3.アップデート」をご参照ください。
 - CentOS 7 環境における冗長構成アップデートについて
@@ -158,12 +160,12 @@ Kompira が利用するポート番号は以下の通りです。
 
 ### 5.1. Kompira リリース履歴
 
-Kompira のリリース履歴については [リリースページ](https://github.com/fixpoint/kompira-package/releases) をご参照ください。
+Kompira のリリース履歴については [リリースページ](https://github.com/fixpoint/kompira-v16-package/releases) をご参照ください。
 
 ### 5.2. Kompira 運用自動化コラム
 
-Kompira の実践的な使い方やジョブフローの書き方については [運用自動化コラム](https://www.kompira.jp/column/) を参考にしてみてください。
+Kompira の実践的な使い方やジョブフローの書き方についてはサポートサイトの [課題解決方法](https://support.kompira.jp/column_category/kompiraenterpriserelation/) を参考にしてみてください。
 
 ### 5.3. Kompira コミュニティサイト
 
-Kompira の使い方が分からない場合などは、 [コミュニティ> KompiraEnterprise関連](https://kompira.zendesk.com/hc/ja/community/topics/360000014321) を参考にしてみてください。同じような質問や回答が見つからない場合は、新たに投稿してみてください。
+Kompira の使い方が分からない場合などは、コミュニティサイトの [KompiraEnterprise関連](https://kompira.zendesk.com/hc/ja/community/topics/360000014321) を参考にしてみてください。同じような質問や回答が見つからない場合は、新たに投稿してみてください。
