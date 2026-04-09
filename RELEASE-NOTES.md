@@ -1,6 +1,38 @@
 # Kompira リリースノート
 
 ---
+## Ver.1.6.13.post1 (2026/04/10)
+### 修正
+- **データベースアクセスを伴う for ブロックから return などで強制脱出を行なうと psycopg2 がデッドロックして kompirad がハングする場合がある問題を修正しました。**
+- パッケージ情報が作成されない場合がある問題を修正しました。
+- String.startswith() / String.endswith() メソッドで文字列のリストを渡しても判定できない問題を修正しました。
+- Directory.find() などでの絞り込み指定で、プロパティ parent_object に対してパス文字列で指定ができない問題を修正しました。
+- Directory.find() などでの絞り込み指定で、プロパティに対する \_\_exact ルックアップが処理されない問題を修正しました。
+- Windowsへのファイル転送時の内部コマンドの実行結果が稀に空になる場合にリトライするように修正しました。
+- ファイル名に特定の文字を含むファイルを転送できない場合がある問題を修正しました。
+    - Linuxへのファイル転送のためのコマンド実行時に < > ; もエスケープするようにしました。
+    - Windowsへのファイル転送のためのコマンド実行時に全角スペースもエスケープするようにしました。
+    - FileIO.getstat() でファイル情報のパース処理のエラーチェックを強化しました。
+
+### 変更
+- NIC の並び順が変わってもライセンス認証エラーにならないように対応しました。
+
+### マニュアル
+- Datetime および Time 型について microsecond 属性の説明が抜け落ちていたのを追加しました。
+- String.endswith() メソッドのシグネチャと説明文を修正しました。
+- String.encode()/Binary.decode() メソッドの説明文の表現を改善しました。
+- REST-API GET /scheduler/id_<スケジュールID> の応答例を修正しました。
+- 重複していたフィールド修飾子 min_length/max_length の説明を適切に書き分けました。
+- typo や一部表現を修正しました。
+
+### ライブラリアップデート
+- Kompira が利用する Python ライブラリを新たに追加しました。
+    - `tenacity ~= 9.1.4`
+
+### 注意点
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://github.com/fixpoint/kompira-v16-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+
+---
 ## Ver.1.6.13 (2026/01/30)
 ### 動作環境
 - **【重要】新たに以下の OS に対応しました。**
@@ -157,7 +189,7 @@
 - チャネルへの大きいメッセージ受信時などにスロークエリログを抑止するようにしました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.12.post1 (2025/09/26)
@@ -189,7 +221,7 @@
 - 一部の Python ライブラリのバージョン指定を更新しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.12 (2025/07/18)
@@ -272,7 +304,7 @@
 ### 注意点
 - OS標準ではない追加リポジトリ (epel, pgdg*, modern-erlang*, rabbitmq-server* など) については、Kompira のインストール後にデフォルト無効化となるようになりました。
     - インストーラ外で追加リポジトリのパッケージのアップデートをしたい場合は、明示的なリポジトリの有効化指定が必要になります。
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.11 (2025/04/25)
@@ -328,7 +360,7 @@
 - 新規インストール環境では Python 3.9 で Kompira が動作することになるため、ライブラリオブジェクトの動作に影響を与える可能性があります。以下のような場面では、十分に動作確認するようにしてください。
     - Python 3.8 以前の環境で利用していたライブラリオブジェクトを流用する場合。
     - ユーザが自身で Kompira 環境に追加の Python モジュールをインストールして利用する場合。
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.10.post1 (2024/12/20)
@@ -345,7 +377,7 @@
 - ライブラリオブジェクトを含むインポートを行なった時に、別のライブラリオブジェクトのインポートエラーで実行不可になっているライブラリオブジェクトを再コンパイルするようにしました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.10 (2024/11/22)
@@ -418,7 +450,7 @@
 - [merge-v2] KE 2.0 における性能改善を部分的に移植しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.9.post3 (2024/06/07)
@@ -431,7 +463,7 @@
 - CentOS Stream 8 の EOL に伴いサポート OS から削除しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.9.post2 (2024/04/12)
@@ -453,7 +485,7 @@
 - テーブル詳細画面でブール値を検索した際のデフォルトエラーメッセージを更新しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.9.post1 (2024/01/26)
@@ -479,7 +511,7 @@
 - 関数呼び出し中に例外が発生したとき例外情報のコンソールへの出力をやめてログに出力するようにしました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.9 (2023/11/02)
@@ -546,7 +578,7 @@
 - ディレクトリ形式でのエクスポート・インポート処理において、代表フィールド（ジョブフローの source フィールドなど）の改行コードの取り扱いが変わっています。
     - 代表フィールドの改行コードはデータベース上では CRLF に、ディレクトリ形式でエクスポートしたファイルは OS 標準の改行コード（Linux であれば LF）になることに注意してください。
     - エクスポートしたデータを github などの外部リポジトリで履歴管理を行なっている場合は、今回のアップデート後の1回については改行コードが差分となる可能性があります。
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.8.post2 (2023/07/14)
@@ -648,7 +680,7 @@
     - このとき冗長構成として必ず2台セットで rabbitmq-server のマイナーバージョンが +1 づつ更新するようにしてください。たとえばスタンバイ側だけ2回アップデートしてから、アクティブ側も2回アップデートするといった手順は取らないようにしてください。
     - 冗長構成で rabbitmq-server がマイナーアップデートした場合は、2台とも更新を終えてクラスタが正常に起動した後に、前述の rabbitmq-server の機能を有効化する手順を実施するようにしてください。
 - 冗長構成のアップデートでアップデート前の rabbitmq-server のバージョンが古すぎる（3.3.X など）場合は、rabbitmq-server のローリングアップデートができないため、両系停止アップデート手順を実施する必要があります。
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.8.post1 (2023/05/19)
@@ -672,14 +704,14 @@
 - safe_source タイプのライブラリを更新したときのドキュメント作成でエラーが発生して実行不可になる場合がある問題を修正しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.8 (2023/04/07)
 
 ### 動作環境
 - v3.8.0 より古いバージョンの rabbitmq-server は非対応になりました。
-- rabbitmq-server が SSL (AMQPS) 接続するようになりました。ただし、アップデート時は以前の構成のまま動作するようになっています。詳細は「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- rabbitmq-server が SSL (AMQPS) 接続するようになりました。ただし、アップデート時は以前の構成のまま動作するようになっています。詳細は「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ### 新機能
 - LDAPサーバ連携機能
@@ -751,7 +783,7 @@
 - プロセス詳細画面から子プロセスの削除ができない問題を修正しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.7.post1 (2022/12/12)
@@ -767,7 +799,7 @@
 - install.sh の --with-gdb オプションでデバッグツールのインストールに失敗する問題を修正しました。
 
 ### 注意点
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.7 (2022/11/21)
@@ -880,7 +912,7 @@
     $ echo -e "from django.contrib.sessions.models import Session\nSession.objects.all().delete()" | /opt/kompira/bin/manage.py shell
     ```
 
-- 過去のリリースでの注意点については「[アップデート時の注意点](https://github.com/fixpoint/kompira-package/blob/main/UPDATE-NOTES.md)」を参照してください。
+- 過去のリリースでの注意点については「[Kompira Enterprise アップデート時の注意点](https://docbase.io/posts/2678628/sharing/c9fd6a81-53ed-4cd7-87b5-45042e71635c)」を参照してください。
 
 ---
 ## Ver.1.6.6 (2022/08/09)
