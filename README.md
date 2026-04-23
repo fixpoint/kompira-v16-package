@@ -158,9 +158,9 @@ Kompira が利用するポート番号は以下の通りです。
 
 ## 5. Kompira 関連の情報
 
-### 5.1. Kompira リリース履歴
+### 5.1. Kompira ニュース
 
-Kompira のリリース履歴については [リリースページ](https://github.com/fixpoint/kompira-v16-package/releases) をご参照ください。
+Kompira の最新情報については [お知らせ](https://support.kompira.jp/news/) をご参照ください。
 
 ### 5.2. Kompira 運用自動化コラム
 
