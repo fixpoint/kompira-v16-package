@@ -1,6 +1,33 @@
 # アップデート時の注意点
 Kompira Enterprise をアップデートを検討する際は、各リリースのリリースノートを参照して仕様変更や注意点について確認するようにしてください。この資料では、以前のバージョンから最新バージョンまでの注意点についてまとめます。
 
+## v1.6.13.post2
+- **v1.6.13.post1 でローカル管理アドレスしか持たない環境でハードウェアIDが払い出せずライセンス認証に失敗する問題を修正しました。**
+    - v1.6.13.post1 でハードウェアIDが "NODE:UNKNOWN" となっている場合でも、./install.sh に --force オプションを追加すると強制的に v1.6.13.post2 にアップデートできます。
+        ```
+        $ curl -LO https://github.com/fixpoint/kompira-v16-package/releases/download/v1.6.13.post2/kompira-1.6.13.post2-bin.tar.gz
+        $ tar zxf kompira-1.6.13.post2-bin.tar.gz 
+        $ cd kompira-1.6.13.post2-bin
+        $ sudo ./install.sh --force
+        ※ install.sh に --force オプションを付けることでライセンスエラーを無視してアップデートを行ないます。
+        ```
+
+## v1.6.13.post1
+- **【重要】KE1.6.13.post1 において、ハードウェアIDが UNKNOWN となりライセンスエラーになる場合がある不具合が見つかりました。新規インストールおよびアップデートを控えるようにしてください。**
+    - IaaS 環境や KVM 環境など、VM の NIC にローカル管理アドレスが払い出されるプラットフォームにおいて v1.6.13.post1 をインストールまたはアップデートすると、ハードウェアIDが「NODE:UNKNOWN」となる場合があります。これに該当すると、以下のような問題が生じます。
+        - NODE:UNKNOWN ではライセンス発行を申請できない。
+        - 適用済みのライセンスがあってもライセンスエラーが発生する。
+        - アップグレードやダウングレードで install.sh が失敗する。
+    - 該当する環境で、v1.6.13.post1 にアップデートしてしまい、ライセンスエラーが発生している場合、大変お手数ですが、以下の手順で v1.6.13  にダウングレードすることをご検討ください。
+        ```
+        $ curl -LO https://github.com/fixpoint/kompira-v16-package/releases/download/v1.6.13/kompira-1.6.13-bin.tar.gz
+        $ tar zxf kompira-1.6.13-bin.tar.gz 
+        $ cd kompira-1.6.13-bin
+        $ sudo ./install.sh --force
+        ※ install.sh に --force オプションを付けることでライセンスエラーを無視してダウングレードを行ないます。
+        ```
+    - ※ v1.6.13.post2 で修正されました。
+
 ## v1.6.13
 - **【重要】Python 3.12 に対応し、Python 3.9 以前のサポートを終了しました。**
     - **新規インストールする場合は Python 3.12 を Kompira の環境として利用するように構成します。**
