@@ -6,7 +6,9 @@ set -e
 # matter which directory it is invoked from.
 cd "$(dirname "$0")/.."
 
-: "${GH_REPO:="fixpoint/kompira-v16-package"}"
+# Fixed target repository. Hardcoded (not an overridable env var) so the value
+# interpolated into the emitted command cannot be a vector for shell injection.
+GH_REPO="fixpoint/kompira-v16-package"
 
 if [ "$1" = "" ]; then
     echo "usage: $0 <version>" >&2
@@ -42,8 +44,9 @@ if [ ! -f "$RELEASE_NOTE" ]; then
 fi
 
 # Extract the release note for the specified version.
-# Match from the version heading up to the next "---" separator (or EOF for
-# the oldest entry), then strip the trailing separator and blank lines.
+# Match from the version heading up to (but not including) the next "---"
+# separator (or EOF for the oldest entry); the lookahead keeps the separator
+# out of the match, so only the trailing blank lines remain to be stripped.
 # VERSION is exported so it is visible to perl as $ENV{VERSION}.
 export VERSION
 perl -0777 -ne '
