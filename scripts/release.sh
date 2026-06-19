@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 set -e
 
 # This script lives in scripts/ but uses paths relative to the repository root
@@ -18,20 +18,16 @@ VERSION="$1"
 TAG_NAME="v${VERSION}"
 TITLE="Kompira Enterprise $TAG_NAME"
 RELEASE_NOTE="./RELEASE-NOTES.md"
+RELEASE_NOTE_TMP="./.RELEASE-NOTES.md.tmp"
 PACKAGE_FILE="./packages/kompira-${VERSION}-bin.tar.gz"
 
-# Check if the package file and release note file exist, 
-# and if the release note for the specified version is present
+# Check that the package file and the release note file exist.
 if [ ! -f "$PACKAGE_FILE" ]; then
     echo "ERROR: Package file not found: $PACKAGE_FILE" > /dev/stderr
     exit 1
 fi
 if [ ! -f "$RELEASE_NOTE" ]; then
     echo "ERROR: Release note file not found: $RELEASE_NOTE" > /dev/stderr
-    exit 1
-fi
-if ! grep -q "^## Ver.${VERSION} " "$RELEASE_NOTE"; then
-    echo "ERROR: Release note for version $VERSION not found in $RELEASE_NOTE" > /dev/stderr
     exit 1
 fi
 
@@ -46,9 +42,17 @@ perl -0777 -ne '
     $match =~ s/\s+\z//;
     print $match, "\n";
   }
-' "$RELEASE_NOTE" > "$RELEASE_NOTE.tmp"
+' "$RELEASE_NOTE" > "$RELEASE_NOTE_TMP"
+
+# perl matches the version heading literally (\Q...\E), so empty output means
+# the requested version is not present in the release note.
+if [ ! -s "$RELEASE_NOTE_TMP" ]; then
+    echo "ERROR: Release note for version $VERSION not found in $RELEASE_NOTE" > /dev/stderr
+    rm -f "$RELEASE_NOTE_TMP"
+    exit 1
+fi
 
 # Create the release on GitHub and upload the package file in one step
 # (attaching the asset to `release create` avoids a published release that is
 # momentarily missing its binary).
-echo "gh release create \"$TAG_NAME\" \"$PACKAGE_FILE\" --title \"$TITLE\" --notes-file \"$RELEASE_NOTE.tmp\" --repo \"$GH_REPO\""
+echo "gh release create \"$TAG_NAME\" \"$PACKAGE_FILE\" --title \"$TITLE\" --notes-file \"$RELEASE_NOTE_TMP\" --repo \"$GH_REPO\""
