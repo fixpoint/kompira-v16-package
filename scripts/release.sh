@@ -1,10 +1,13 @@
 #!/bin/sh
 set -e
 
-# This script lives in scripts/ but uses paths relative to the repository root
-# (./RELEASE-NOTES.md, ./packages/...). Move to the repo root so it works no
-# matter which directory it is invoked from.
+# This script lives in scripts/ but operates on files at the repository root
+# (RELEASE-NOTES.md, packages/...). Move to the repo root and capture its
+# absolute path, so both the script itself and the absolute paths embedded in
+# the emitted command work no matter which directory it is invoked from (the
+# emitted command runs in the caller's working directory, e.g. via `| sh`).
 cd "$(dirname "$0")/.."
+ROOT=$(pwd)
 
 # Fixed target repository. Hardcoded (not an overridable env var) so the value
 # interpolated into the emitted command cannot be a vector for shell injection.
@@ -29,9 +32,9 @@ esac
 
 TAG_NAME="v${VERSION}"
 TITLE="Kompira Enterprise $TAG_NAME"
-RELEASE_NOTE="./RELEASE-NOTES.md"
-RELEASE_NOTE_TMP="./.RELEASE-NOTES.md.tmp"
-PACKAGE_FILE="./packages/kompira-${VERSION}-bin.tar.gz"
+RELEASE_NOTE="$ROOT/RELEASE-NOTES.md"
+RELEASE_NOTE_TMP="$ROOT/.RELEASE-NOTES.md.tmp"
+PACKAGE_FILE="$ROOT/packages/kompira-${VERSION}-bin.tar.gz"
 
 # Check that the package file and the release note file exist.
 if [ ! -f "$PACKAGE_FILE" ]; then
