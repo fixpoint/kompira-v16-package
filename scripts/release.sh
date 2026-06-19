@@ -9,12 +9,22 @@ cd "$(dirname "$0")/.."
 : "${GH_REPO:="fixpoint/kompira-v16-package"}"
 
 if [ "$1" = "" ]; then
-    echo "usage: $0 <version>" > /dev/stderr
-    echo "example: $0 1.6.13.post1" > /dev/stderr
+    echo "usage: $0 <version>" >&2
+    echo "example: $0 1.6.13.post1" >&2
     exit 1
 fi
 
 VERSION="$1"
+
+# Reject versions containing characters outside the expected set. VERSION is
+# interpolated into the emitted command (run via `| sh`), so this also guards
+# against shell injection and accidental quoting issues.
+case "$VERSION" in
+    *[!0-9A-Za-z._-]*)
+        echo "ERROR: invalid version: $VERSION" >&2
+        exit 1 ;;
+esac
+
 TAG_NAME="v${VERSION}"
 TITLE="Kompira Enterprise $TAG_NAME"
 RELEASE_NOTE="./RELEASE-NOTES.md"
@@ -23,11 +33,11 @@ PACKAGE_FILE="./packages/kompira-${VERSION}-bin.tar.gz"
 
 # Check that the package file and the release note file exist.
 if [ ! -f "$PACKAGE_FILE" ]; then
-    echo "ERROR: Package file not found: $PACKAGE_FILE" > /dev/stderr
+    echo "ERROR: Package file not found: $PACKAGE_FILE" >&2
     exit 1
 fi
 if [ ! -f "$RELEASE_NOTE" ]; then
-    echo "ERROR: Release note file not found: $RELEASE_NOTE" > /dev/stderr
+    echo "ERROR: Release note file not found: $RELEASE_NOTE" >&2
     exit 1
 fi
 
@@ -47,7 +57,7 @@ perl -0777 -ne '
 # perl matches the version heading literally (\Q...\E), so empty output means
 # the requested version is not present in the release note.
 if [ ! -s "$RELEASE_NOTE_TMP" ]; then
-    echo "ERROR: Release note for version $VERSION not found in $RELEASE_NOTE" > /dev/stderr
+    echo "ERROR: Release note for version $VERSION not found in $RELEASE_NOTE" >&2
     rm -f "$RELEASE_NOTE_TMP"
     exit 1
 fi
